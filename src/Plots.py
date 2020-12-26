@@ -10,7 +10,7 @@ class Plots:
 
 		plt.xlabel("t(s)", fontsize=16, loc="right", color="#ff0033")
 		plt.ylabel("n(t)", fontsize=16, rotation=0, loc="top", color="#ff0033")
-		plt.title("Number of Customers in the System per Second", fontsize=16, color="#220066")
+		plt.title("Customers per Second", fontsize=16, color="#220066")
 
 		plt.ylim(0, dd1k.get_k() + dd1k.get_initial_customers() + 1)
 		plt.xlim(0, 70)
