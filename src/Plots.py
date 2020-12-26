@@ -6,7 +6,7 @@ class Plots:
 	def plot_system_size_per_time(dd1k):
 
 		plt.grid()
-		plt.style.use("fivethirtyeight")
+		# plt.style.use("fivethirtyeight")
 
 		plt.xlabel("t(s)", fontsize=16, loc="right", color="#ff0033")
 		plt.ylabel("n(t)", fontsize=16, rotation=0, loc="top", color="#ff0033")
@@ -23,7 +23,7 @@ class Plots:
 	def plot_departure(dd1k):
 
 		plt.grid()
-		plt.style.use("fivethirtyeight")
+		# plt.style.use("fivethirtyeight")
 
 		plt.xlabel("Customer", fontsize=16, loc="right", color="#ff0033")
 		plt.ylabel("departure time", fontsize=16, rotation=0, loc="top", color="#ff0033")
@@ -40,7 +40,7 @@ class Plots:
 	def plot_queue_time(dd1k):
 
 		plt.grid()
-		plt.style.use("fivethirtyeight")
+		# plt.style.use("fivethirtyeight")
 
 		plt.xlabel("Customer", fontsize=16, loc="right", color="#ff0033")
 		plt.ylabel("queue time", fontsize=16, rotation=0, loc="top", color="#ff0033")
@@ -57,7 +57,7 @@ class Plots:
 	def plot_total_time(dd1k):
 
 		plt.grid()
-		plt.style.use("fivethirtyeight")
+		# plt.style.use("fivethirtyeight")
 
 		plt.xlabel("Customer", fontsize=16, loc="right", color="#ff0033")
 		plt.ylabel("total time", fontsize=16, rotation=0, loc="top", color="#ff0033")
