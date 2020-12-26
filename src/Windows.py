@@ -1,6 +1,5 @@
 from tkinter import *
 from tkinter.messagebox import *
-
 from Plots import *
 from Stochastic import *
 from src.Deterministic import *
@@ -10,53 +9,63 @@ class Windows:
     def __init__(self, master):
         # --- Frames --- #
         label_frame1 = LabelFrame(master, text="Models", font=('Ubuntu', 10), fg="#0033ff")
-        label_frame1.grid(row=0, column=0, pady=10, padx=0, columnspan=2)
+        label_frame1.grid(row=0, column=0, pady=10, padx=10, rowspan=2)
 
         label_frame2 = LabelFrame(master, text="Inputs", font=('Ubuntu', 10), fg="#0033ff")
-        label_frame2.grid(row=1, column=0, pady=10, padx=10, columnspan=2)
+        label_frame2.grid(row=0, column=1, pady=10, padx=10)
 
-        label_frame3 = LabelFrame(master, text="Functions", font=('Ubuntu', 10), fg="#0033ff")
-        label_frame3.grid(row=2, column=0, pady=10, padx=0, columnspan=2)
+        label_frame3 = LabelFrame(master, text="", font=('Ubuntu', 10), fg="#0033ff")
+        label_frame3.grid(row=1, column=1, pady=10, padx=10)
 
         frame1 = Frame(label_frame2)
-        frame1.grid(row=0, column=0, pady=10, padx=10)
+        frame1.grid(row=0, column=0, pady=5, padx=5)
 
         frame2 = Frame(label_frame2)
-        frame2.grid(row=0, column=1, pady=10, padx=10)
+        frame2.grid(row=0, column=1, pady=5, padx=5)
 
         frame3 = Frame(label_frame2)
-        frame3.grid(row=1, column=0, pady=10, padx=0, columnspan=2)
+        frame3.grid(row=1, column=0, pady=5, padx=5, columnspan=2)
 
         frame5 = Frame(label_frame3)
-        frame5.grid(row=0, column=0, pady=10, padx=0)
+        frame5.grid(row=0, column=0, pady=5, padx=10)
 
         frame6 = Frame(label_frame3)
-        frame6.grid(row=0, column=1, pady=10, padx=0)
+        frame6.grid(row=0, column=1, pady=5, padx=10)
 
         # --- Buttons --- #
-        self.Quit = Button(frame5, text="Quit", font=('Ubuntu', 16), fg="red", command=self.exit_program)
-        self.Quit.grid(row=0, column=0, sticky=W, pady=0, padx=86)
+        self.Quit_img = PhotoImage(file="Img/button_quit.png")
+        self.Calculate_img = PhotoImage(file="Img/button_calculate.png")
 
-        self.Calculate = Button(frame6, text="Calculate", font=('Ubuntu', 16), fg="green", command=self.radio_event)
-        self.Calculate.grid(row=0, column=0, sticky=W, pady=0, padx=86)
+        self.Quit = Button(frame5, image=self.Quit_img, command=self.exit_program, borderwidth=0)
+        self.Quit.grid(row=0, column=0, sticky=W, pady=0, padx=87)
+
+        self.Calculate = Button(frame6, image=self.Calculate_img, command=self.radio_event, borderwidth=0)
+        self.Calculate.grid(row=0, column=0, sticky=W, pady=0, padx=87)
 
         # --- Radio Buttons --- #
         self.rad_values = IntVar()
 
-        self.DD1K = Radiobutton(label_frame1, text="D/D/1/K", font=('Ubuntu', 16), fg="#cc0033", value=1, variable=self.rad_values, indicatoron=False)
-        self.DD1K.grid(row=0, column=0, sticky=W, pady=10, padx=10)
+        self.DD1K_img = PhotoImage(file="Img/button_d-d-k.png")
+        self.MM1_img = PhotoImage(file="Img/button_m-m-1.png")
+        self.MM1K_img = PhotoImage(file="Img/button_m-m-k.png")
+        self.MMc_img = PhotoImage(file="Img/button_m-m-c.png")
+        self.MMcK_img = PhotoImage(file="Img/button_m-m-c-k.png")
 
-        self.MM1 = Radiobutton(label_frame1, text="M/M/1", font=('Ubuntu', 16), fg="#3300cc", value=2, variable=self.rad_values, indicatoron=False)
-        self.MM1.grid(row=0, column=1, sticky=W, pady=10, padx=10)
+        # indicatoron = False
+        self.DD1K = Radiobutton(label_frame1, image=self.DD1K_img, value=1, variable=self.rad_values, borderwidth=0)
+        self.DD1K.grid(row=0, column=0, sticky=W, pady=5, padx=10)
 
-        self.MM1K = Radiobutton(label_frame1, text="M/M/1/K", font=('Ubuntu', 16), fg="#ff9933", value=3, variable=self.rad_values, indicatoron=False)
-        self.MM1K.grid(row=0, column=2, sticky=W, pady=10, padx=10)
+        self.MM1 = Radiobutton(label_frame1, image=self.MM1_img, value=2, variable=self.rad_values, borderwidth=0)
+        self.MM1.grid(row=1, column=0, sticky=W, pady=0, padx=10)
 
-        self.MMc = Radiobutton(label_frame1, text="M/M/C", font=('Ubuntu', 16), fg="#006666", value=4, variable=self.rad_values, indicatoron=False)
-        self.MMc.grid(row=0, column=3, sticky=W, pady=10, padx=10)
+        self.MM1K = Radiobutton(label_frame1, image=self.MM1K_img, value=3, variable=self.rad_values, borderwidth=0)
+        self.MM1K.grid(row=2, column=0, sticky=W, pady=5, padx=10)
 
-        self.MMcK = Radiobutton(label_frame1, text="M/M/C/K", font=('Ubuntu', 16), fg="#000033", value=5, variable=self.rad_values, indicatoron=False)
-        self.MMcK.grid(row=0, column=4, sticky=W, pady=10, padx=10)
+        self.MMc = Radiobutton(label_frame1, image=self.MMc_img, value=4, variable=self.rad_values, borderwidth=0)
+        self.MMc.grid(row=3, column=0, sticky=W, pady=0, padx=10)
+
+        self.MMcK = Radiobutton(label_frame1, image=self.MMcK_img, value=5, variable=self.rad_values, borderwidth=0)
+        self.MMcK.grid(row=4, column=0, sticky=W, pady=5, padx=10)
 
         # --- Labels --- #
         self.__lambda = Label(frame1, text="Arrival rate(λ):", font=('Ubuntu', 16))
@@ -102,6 +111,7 @@ class Windows:
             try:
                 dd1k = DD1K(self.__elambda.get(), self.__emu.get(), self.__ek.get(), self.__eM.get())
                 Plots.plot_system_size_per_time(dd1k)
+                del dd1k
 
             except SyntaxError:
                 showwarning(title="Warning", message="Please, enter a real value for λ, μ, K and M")
@@ -161,6 +171,7 @@ class Windows:
                 capital_rho_right = Label(label_frame_rho, text=f"{mm1.get_rho()}", font=('Ubuntu', 16), fg="#0000ff")
                 capital_rho_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
+                del mm1
                 answer.mainloop()
 
             except SyntaxError:
@@ -221,6 +232,7 @@ class Windows:
                 capital_rho_right = Label(label_frame_rho, text=f"{mm1k.get_rho()}", font=('Ubuntu', 16), fg="#0000ff")
                 capital_rho_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
+                del mm1k
                 answer.mainloop()
 
             except SyntaxError:
@@ -281,6 +293,7 @@ class Windows:
                 capital_rho_right = Label(label_frame_rho, text=f"{mmc.get_rho()}", font=('Ubuntu', 16), fg="#0000ff")
                 capital_rho_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
+                del mmc
                 answer.mainloop()
 
             except SyntaxError:
@@ -341,6 +354,7 @@ class Windows:
                 capital_rho_right = Label(label_frame_rho, text=f"{mmck.get_rho()}", font=('Ubuntu', 16), fg="#0000ff")
                 capital_rho_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
+                del mmck
                 answer.mainloop()
 
             except SyntaxError:
