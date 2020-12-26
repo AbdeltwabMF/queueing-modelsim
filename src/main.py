@@ -10,7 +10,6 @@ from tkinter import *
 
 windows = Tk()
 windows.title("Queueing ModelSim")
-windows.geometry("747x385")
 
 QC = Windows(windows)
 windows.mainloop()
