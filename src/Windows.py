@@ -162,7 +162,7 @@ class Windows:
                     capital_lq = mm1.capital_lq()
                     capital_w = mm1.capital_w()
                     capital_wq = mm1.capital_wq()
-                    capital_rho = mm1.get_rho()
+                    rho = mm1.get_rho()
                 except ZeroDivisionError as zde:
                     showerror(title="Error", message=f"{zde}!")
                 except Exception as e:
@@ -177,7 +177,7 @@ class Windows:
                     capital_l_left = Label(label_frame_l, text="L =", font=('Ubuntu', 16), fg="#ff6600")
                     capital_l_left.grid(row=0, column=0, padx=10, pady=5)
 
-                    capital_l_right = Label(label_frame_l, text=f"{mm1.capital_l()} Customers", font=('Ubuntu', 16), fg="#ff6600")
+                    capital_l_right = Label(label_frame_l, text=f"{capital_l} Customers", font=('Ubuntu', 16), fg="#ff6600")
                     capital_l_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     label_frame_lq = LabelFrame(answer, text="Average Customers in Queue", font=('Ubuntu', 10), fg="#333333")
@@ -186,7 +186,7 @@ class Windows:
                     capital_lq_left = Label(label_frame_lq, text="Lq =", font=('Ubuntu', 16), fg="#333333")
                     capital_lq_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_lq_right = Label(label_frame_lq, text=f"{mm1.capital_lq()} Customers", font=('Ubuntu', 16), fg="#333333")
+                    capital_lq_right = Label(label_frame_lq, text=f"{capital_lq} Customers", font=('Ubuntu', 16), fg="#333333")
                     capital_lq_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     label_frame_w = LabelFrame(answer, text="Average Time Spent in System", font=('Ubuntu', 10), fg="#ff00ff")
@@ -195,7 +195,7 @@ class Windows:
                     capital_w_left = Label(label_frame_w, text="W =", font=('Ubuntu', 16), fg="#ff00ff")
                     capital_w_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_w_right = Label(label_frame_w, text=f"{mm1.capital_w()} Minutes", font=('Ubuntu', 16), fg="#ff00ff")
+                    capital_w_right = Label(label_frame_w, text=f"{capital_w} Seconds", font=('Ubuntu', 16), fg="#ff00ff")
                     capital_w_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     label_frame_wq = LabelFrame(answer, text="Average Time Waiting in Line", font=('Ubuntu', 10), fg="#003333")
@@ -204,7 +204,7 @@ class Windows:
                     capital_wq_left = Label(label_frame_wq, text="Wq =", font=('Ubuntu', 16), fg="#003333")
                     capital_wq_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_wq_right = Label(label_frame_wq, text=f"{mm1.capital_wq()} Minutes", font=('Ubuntu', 16), fg="#003333")
+                    capital_wq_right = Label(label_frame_wq, text=f"{capital_wq} Seconds", font=('Ubuntu', 16), fg="#003333")
                     capital_wq_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     label_frame_rho = LabelFrame(answer, text="Server Utilization", font=('Ubuntu', 10), fg="#0000ff")
@@ -213,7 +213,7 @@ class Windows:
                     capital_rho_left = Label(label_frame_rho, text="ρ =", font=('Ubuntu', 16), fg="#0000ff")
                     capital_rho_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_rho_right = Label(label_frame_rho, text=f"{mm1.get_rho()}", font=('Ubuntu', 16), fg="#0000ff")
+                    capital_rho_right = Label(label_frame_rho, text=f"{rho}", font=('Ubuntu', 16), fg="#0000ff")
                     capital_rho_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     del mm1
@@ -235,7 +235,7 @@ class Windows:
                     capital_lq = mm1k.capital_lq()
                     capital_w = mm1k.capital_w()
                     capital_wq = mm1k.capital_wq()
-                    capital_rho = mm1k.get_rho()
+                    rho = mm1k.get_rho()
                 except ZeroDivisionError as zde:
                     showerror(title="Error", message=f"{zde}!")
                 except Exception as e:
@@ -250,7 +250,7 @@ class Windows:
                     capital_l_left = Label(label_frame_l, text="L =", font=('Ubuntu', 16), fg="#ff6600")
                     capital_l_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_l_right = Label(label_frame_l, text=f"{mm1k.capital_l()} Customers", font=('Ubuntu', 16), fg="#ff6600")
+                    capital_l_right = Label(label_frame_l, text=f"{capital_l} Customers", font=('Ubuntu', 16), fg="#ff6600")
                     capital_l_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     label_frame_lq = LabelFrame(answer, text="Average Customers in Queue", font=('Ubuntu', 10), fg="#333333")
@@ -259,7 +259,7 @@ class Windows:
                     capital_lq_left = Label(label_frame_lq, text="Lq =", font=('Ubuntu', 16), fg="#333333")
                     capital_lq_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_lq_right = Label(label_frame_lq, text=f"{mm1k.capital_lq()} Customers", font=('Ubuntu', 16), fg="#333333")
+                    capital_lq_right = Label(label_frame_lq, text=f"{capital_lq} Customers", font=('Ubuntu', 16), fg="#333333")
                     capital_lq_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     label_frame_w = LabelFrame(answer, text="Average Time Spent in System", font=('Ubuntu', 10), fg="#ff00ff")
@@ -268,7 +268,7 @@ class Windows:
                     capital_w_left = Label(label_frame_w, text="W =", font=('Ubuntu', 16), fg="#ff00ff")
                     capital_w_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_w_right = Label(label_frame_w, text=f"{mm1k.capital_w()} Minutes", font=('Ubuntu', 16), fg="#ff00ff")
+                    capital_w_right = Label(label_frame_w, text=f"{capital_w} Seconds", font=('Ubuntu', 16), fg="#ff00ff")
                     capital_w_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     label_frame_wq = LabelFrame(answer, text="Average Time Waiting in Line", font=('Ubuntu', 10), fg="#003333")
@@ -277,7 +277,7 @@ class Windows:
                     capital_wq_left = Label(label_frame_wq, text="Wq =", font=('Ubuntu', 16), fg="#003333")
                     capital_wq_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_wq_right = Label(label_frame_wq, text=f"{mm1k.capital_wq()} Minutes", font=('Ubuntu', 16), fg="#003333")
+                    capital_wq_right = Label(label_frame_wq, text=f"{capital_wq} Seconds", font=('Ubuntu', 16), fg="#003333")
                     capital_wq_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     label_frame_rho = LabelFrame(answer, text="Server Utilization", font=('Ubuntu', 10), fg="#0000ff")
@@ -286,7 +286,7 @@ class Windows:
                     capital_rho_left = Label(label_frame_rho, text="ρ =", font=('Ubuntu', 16), fg="#0000ff")
                     capital_rho_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_rho_right = Label(label_frame_rho, text=f"{mm1k.get_rho()}", font=('Ubuntu', 16), fg="#0000ff")
+                    capital_rho_right = Label(label_frame_rho, text=f"{rho}", font=('Ubuntu', 16), fg="#0000ff")
                     capital_rho_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     del mm1k
@@ -308,7 +308,7 @@ class Windows:
                     capital_lq = mmc.capital_lq()
                     capital_w = mmc.capital_w()
                     capital_wq = mmc.capital_wq()
-                    capital_rho = mmc.get_rho()
+                    rho = mmc.get_rho()
                 except ZeroDivisionError as zde:
                     showerror(title="Error", message=f"{zde}!")
                 except Exception as e:
@@ -323,7 +323,7 @@ class Windows:
                     capital_l_left = Label(label_frame_l, text="L =", font=('Ubuntu', 16), fg="#ff6600")
                     capital_l_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_l_right = Label(label_frame_l, text=f"{mmc.capital_l()} Customers", font=('Ubuntu', 16), fg="#ff6600")
+                    capital_l_right = Label(label_frame_l, text=f"{capital_l} Customers", font=('Ubuntu', 16), fg="#ff6600")
                     capital_l_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     label_frame_lq = LabelFrame(answer, text="Average Customers in Queue", font=('Ubuntu', 10), fg="#333333")
@@ -332,7 +332,7 @@ class Windows:
                     capital_lq_left = Label(label_frame_lq, text="Lq =", font=('Ubuntu', 16), fg="#333333")
                     capital_lq_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_lq_right = Label(label_frame_lq, text=f"{mmc.capital_lq()} Customers", font=('Ubuntu', 16), fg="#333333")
+                    capital_lq_right = Label(label_frame_lq, text=f"{capital_lq} Customers", font=('Ubuntu', 16), fg="#333333")
                     capital_lq_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     label_frame_w = LabelFrame(answer, text="Average Time Spent in System", font=('Ubuntu', 10), fg="#ff00ff")
@@ -341,7 +341,7 @@ class Windows:
                     capital_w_left = Label(label_frame_w, text="W =", font=('Ubuntu', 16), fg="#ff00ff")
                     capital_w_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_w_right = Label(label_frame_w, text=f"{mmc.capital_w()} Minutes", font=('Ubuntu', 16), fg="#ff00ff")
+                    capital_w_right = Label(label_frame_w, text=f"{capital_w} Seconds", font=('Ubuntu', 16), fg="#ff00ff")
                     capital_w_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     label_frame_wq = LabelFrame(answer, text="Average Time Waiting in Line", font=('Ubuntu', 10), fg="#003333")
@@ -350,7 +350,7 @@ class Windows:
                     capital_wq_left = Label(label_frame_wq, text="Wq =", font=('Ubuntu', 16), fg="#003333")
                     capital_wq_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_wq_right = Label(label_frame_wq, text=f"{mmc.capital_wq()} Minutes", font=('Ubuntu', 16), fg="#003333")
+                    capital_wq_right = Label(label_frame_wq, text=f"{capital_wq} Seconds", font=('Ubuntu', 16), fg="#003333")
                     capital_wq_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     label_frame_rho = LabelFrame(answer, text="Server Utilization", font=('Ubuntu', 10), fg="#0000ff")
@@ -359,7 +359,7 @@ class Windows:
                     capital_rho_left = Label(label_frame_rho, text="ρ =", font=('Ubuntu', 16), fg="#0000ff")
                     capital_rho_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_rho_right = Label(label_frame_rho, text=f"{mmc.get_rho()}", font=('Ubuntu', 16), fg="#0000ff")
+                    capital_rho_right = Label(label_frame_rho, text=f"{rho}", font=('Ubuntu', 16), fg="#0000ff")
                     capital_rho_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     del mmc
@@ -381,7 +381,7 @@ class Windows:
                     capital_lq = mmck.capital_lq()
                     capital_w = mmck.capital_w()
                     capital_wq = mmck.capital_wq()
-                    capital_rho = mmck.get_rho()
+                    rho = mmck.get_rho()
                 except ZeroDivisionError as zde:
                     showerror(title="Error", message=f"{zde}!")
                 except Exception as e:
@@ -396,7 +396,7 @@ class Windows:
                     capital_l_left = Label(label_frame_l, text="L =", font=('Ubuntu', 16), fg="#ff6600")
                     capital_l_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_l_right = Label(label_frame_l, text=f"{mmck.capital_l()} Customers", font=('Ubuntu', 16), fg="#ff6600")
+                    capital_l_right = Label(label_frame_l, text=f"{capital_l} Customers", font=('Ubuntu', 16), fg="#ff6600")
                     capital_l_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     label_frame_lq = LabelFrame(answer, text="Average Customers in Queue", font=('Ubuntu', 10), fg="#333333")
@@ -405,7 +405,7 @@ class Windows:
                     capital_lq_left = Label(label_frame_lq, text="Lq =", font=('Ubuntu', 16), fg="#333333")
                     capital_lq_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_lq_right = Label(label_frame_lq, text=f"{mmck.capital_lq()} Customers", font=('Ubuntu', 16), fg="#333333")
+                    capital_lq_right = Label(label_frame_lq, text=f"{capital_lq} Customers", font=('Ubuntu', 16), fg="#333333")
                     capital_lq_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     label_frame_w = LabelFrame(answer, text="Average Time Spent in System", font=('Ubuntu', 10), fg="#ff00ff")
@@ -414,7 +414,7 @@ class Windows:
                     capital_w_left = Label(label_frame_w, text="W =", font=('Ubuntu', 16), fg="#ff00ff")
                     capital_w_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_w_right = Label(label_frame_w, text=f"{mmck.capital_w()} Minutes", font=('Ubuntu', 16), fg="#ff00ff")
+                    capital_w_right = Label(label_frame_w, text=f"{capital_w} Seconds", font=('Ubuntu', 16), fg="#ff00ff")
                     capital_w_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     label_frame_wq = LabelFrame(answer, text="Average Time Waiting in Line", font=('Ubuntu', 10), fg="#003333")
@@ -423,7 +423,7 @@ class Windows:
                     capital_wq_left = Label(label_frame_wq, text="Wq =", font=('Ubuntu', 16), fg="#003333")
                     capital_wq_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_wq_right = Label(label_frame_wq, text=f"{mmck.capital_wq()} Minutes", font=('Ubuntu', 16), fg="#003333")
+                    capital_wq_right = Label(label_frame_wq, text=f"{capital_wq} Seconds", font=('Ubuntu', 16), fg="#003333")
                     capital_wq_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     label_frame_rho = LabelFrame(answer, text="Server Utilization", font=('Ubuntu', 10), fg="#0000ff")
@@ -432,7 +432,7 @@ class Windows:
                     capital_rho_left = Label(label_frame_rho, text="ρ =", font=('Ubuntu', 16), fg="#0000ff")
                     capital_rho_left.grid(row=0, column=0, sticky=W, padx=10, pady=5)
 
-                    capital_rho_right = Label(label_frame_rho, text=f"{mmck.get_rho()}", font=('Ubuntu', 16), fg="#0000ff")
+                    capital_rho_right = Label(label_frame_rho, text=f"{rho}", font=('Ubuntu', 16), fg="#0000ff")
                     capital_rho_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
                     del mmck
