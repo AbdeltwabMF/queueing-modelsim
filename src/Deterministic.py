@@ -1,5 +1,4 @@
 from math import floor
-from tkinter.messagebox import *
 
 EPS = 1e-9
 
