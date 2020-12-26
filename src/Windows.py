@@ -30,8 +30,8 @@ class Windows:
         frame6.grid(row=0, column=1, pady=5, padx=10)
 
         # --- Buttons --- #
-        self.Quit_img = PhotoImage(file="Img/button_quit.png")
-        self.Calculate_img = PhotoImage(file="Img/button_calculate.png")
+        self.Quit_img = PhotoImage(file="../Img/button_quit.png")
+        self.Calculate_img = PhotoImage(file="../Img/button_calculate.png")
 
         self.Quit = Button(frame5, image=self.Quit_img, command=self.exit_program, borderwidth=0)
         self.Quit.grid(row=0, column=0, sticky=W, pady=3, padx=16)
@@ -42,11 +42,11 @@ class Windows:
         # --- Radio Buttons --- #
         self.rad_values = IntVar()
 
-        self.DD1K_img = PhotoImage(file="Img/button_d-d-k.png")
-        self.MM1_img = PhotoImage(file="Img/button_m-m-1.png")
-        self.MM1K_img = PhotoImage(file="Img/button_m-m-k.png")
-        self.MMc_img = PhotoImage(file="Img/button_m-m-c.png")
-        self.MMcK_img = PhotoImage(file="Img/button_m-m-c-k.png")
+        self.DD1K_img = PhotoImage(file="../Img/button_d-d-k.png")
+        self.MM1_img = PhotoImage(file="../Img/button_m-m-1.png")
+        self.MM1K_img = PhotoImage(file="../Img/button_m-m-k.png")
+        self.MMc_img = PhotoImage(file="../Img/button_m-m-c.png")
+        self.MMcK_img = PhotoImage(file="../Img/button_m-m-c-k.png")
 
         # indicatoron = False
         self.DD1K = Radiobutton(label_frame1, image=self.DD1K_img, value=1, variable=self.rad_values, borderwidth=0, command=self.rad_dd1k)
