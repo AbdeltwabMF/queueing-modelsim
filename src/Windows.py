@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter.messagebox import *
 from Plots import *
 from Stochastic import *
-from src.Deterministic import *
+from Deterministic import *
 
 
 class Windows:
