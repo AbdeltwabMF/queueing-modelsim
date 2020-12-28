@@ -58,9 +58,10 @@ It is common to use the symbols:
 
 3. In case of Deterministic Queues -AKA- `D/D/1/K` a small window will popup asked you to choose which data you want to plot as shown below.
   
-![Deterministic](./ScreenShots/Deterministic.png)
+  ![Deterministic](./ScreenShots/Deterministic.png)
 
-    the following figures show out the whole plots. 
+## the following figures show out the whole plots. 
+ 
  ---
   - Firstly: the following fiqure shows The number of entities (aka. Customers) in the System at each unit of time. 
   ![Entities_in_System](./ScreenShots/Entities_in_System.png)
