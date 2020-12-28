@@ -31,11 +31,11 @@ If D and E are not specified then it is assumed that they are infinite.
 
 It is common to use the symbols:
 
- - lambda to be the mean arrival rate.
+ - λ to be the mean arrival rate.
  - µ to be the mean service rate.
 
 
-## Usage
+# Queueing ModelSim - What it does and How to use it
 
 1. Download the repository, or Clone it using the following command: `git clone https://github.com/AbdeltwabMF/Queueing-ModelSim` as shown in figure below.
 ![Clone](./ScreenShots/Clone.png)
@@ -47,7 +47,7 @@ It is common to use the symbols:
 
 
   - Choose the queueing model you want to calculate. `D/D/1/K`, `M/M/1`, `M/M/1/K`, `M/M/C`, or `M/M/C/K`
-  - Choose the arrival (Lambda) and service rates (Mu).
+  - Choose the arrival rate (λ) and service rates (µ).
   - Then choose  the number of servers in your system (C), in case of models (`M/M/C` or `M/M/C/K`), the maximum number of entities (aka. Customers) that your queue can hold (K), in case of models (`D/D/1/K`, `M/M/1/K`, or `M/M/C/K`), and the number of initial entities in the system(M) in case of model (`D/D/1/K`). 
   - Press Calculate. 
 
