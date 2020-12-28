@@ -30,8 +30,8 @@ class Windows:
         frame6.grid(row=0, column=1, pady=5, padx=10)
 
         # --- Buttons --- #
-        self.Quit_img = PhotoImage(file="../Img/button_quit.png")
-        self.Calculate_img = PhotoImage(file="../Img/button_calculate.png")
+        self.Quit_img = PhotoImage(file="./Img/button_quit.png")
+        self.Calculate_img = PhotoImage(file="./Img/button_calculate.png")
 
         self.Quit = Button(frame5, image=self.Quit_img, command=self.exit_program, borderwidth=0)
         self.Quit.grid(row=0, column=0, sticky=W, pady=3, padx=16)
@@ -39,14 +39,20 @@ class Windows:
         self.Calculate = Button(frame6, image=self.Calculate_img, command=self.radio_event, borderwidth=0)
         self.Calculate.grid(row=0, column=0, sticky=W, pady=3, padx=16)
 
+        # --- Plots Buttons --- #
+        self.sys_size_img = PhotoImage(file="./Img/e_in_s.png")
+        self.q_time_img = PhotoImage(file="./Img/w_in_q.png")
+        self.total_time_img = PhotoImage(file="./Img/w_in_s.png")
+        self.departure_img = PhotoImage(file="./Img/d_t.png")
+
         # --- Radio Buttons --- #
         self.rad_values = IntVar()
 
-        self.DD1K_img = PhotoImage(file="../Img/button_d-d-k.png")
-        self.MM1_img = PhotoImage(file="../Img/button_m-m-1.png")
-        self.MM1K_img = PhotoImage(file="../Img/button_m-m-k.png")
-        self.MMc_img = PhotoImage(file="../Img/button_m-m-c.png")
-        self.MMcK_img = PhotoImage(file="../Img/button_m-m-c-k.png")
+        self.DD1K_img = PhotoImage(file="./Img/button_d-d-k.png")
+        self.MM1_img = PhotoImage(file="./Img/button_m-m-1.png")
+        self.MM1K_img = PhotoImage(file="./Img/button_m-m-k.png")
+        self.MMc_img = PhotoImage(file="./Img/button_m-m-c.png")
+        self.MMcK_img = PhotoImage(file="./Img/button_m-m-c-k.png")
 
         # indicatoron = False
         self.DD1K = Radiobutton(label_frame1, image=self.DD1K_img, value=1, variable=self.rad_values, borderwidth=0, command=self.rad_dd1k)
@@ -142,8 +148,38 @@ class Windows:
         if radio_selected == 1:
             try:
                 dd1k = DD1K(self.__elambda.get(), self.__emu.get(), self.__ek.get(), self.__eM.get())
-                Plots.plot_system_size_per_time(dd1k)
 
+                def sys_size_p():
+                    Plots.plot_system_size_per_time(dd1k)
+
+                def q_time_p():
+                    Plots.plot_queue_time(dd1k)
+
+                def total_time_p():
+                    Plots.plot_total_time(dd1k)
+
+                def departure_p():
+                    Plots.plot_departure(dd1k)
+
+                answer = Toplevel()
+                answer.title("D/D/1/K")
+
+                label_frame = LabelFrame(answer, text="Choose Plot", font=('Ubuntu', 10), fg="#0033ff")
+                label_frame.grid(row=0, column=0, sticky=W, padx=10, pady=5)
+
+                sys_size = Button(label_frame, image=self.sys_size_img, command=sys_size_p, borderwidth=0)
+                sys_size.grid(row=0, column=0, sticky=W, padx=10, pady=5)
+
+                q_time = Button(label_frame, image=self.q_time_img, command=q_time_p, borderwidth=0)
+                q_time.grid(row=0, column=1, sticky=W, padx=10, pady=5)
+
+                total_time = Button(label_frame, image=self.total_time_img, command=total_time_p, borderwidth=0)
+                total_time.grid(row=1, column=0, sticky=W, padx=10, pady=5)
+
+                departure = Button(label_frame, image=self.departure_img, command=departure_p, borderwidth=0)
+                departure.grid(row=1, column=1, sticky=W, padx=10, pady=5)
+
+                answer.mainloop()
                 del dd1k
 
             except SyntaxError:
@@ -216,8 +252,8 @@ class Windows:
                     capital_rho_right = Label(label_frame_rho, text=f"{rho}", font=('Ubuntu', 16), fg="#0000ff")
                     capital_rho_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
-                    del mm1
                     answer.mainloop()
+                    del mm1
 
             except SyntaxError:
                 showerror(title="Error", message="Please, enter a real value for λ and μ")
@@ -289,8 +325,8 @@ class Windows:
                     capital_rho_right = Label(label_frame_rho, text=f"{rho}", font=('Ubuntu', 16), fg="#0000ff")
                     capital_rho_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
-                    del mm1k
                     answer.mainloop()
+                    del mm1k
 
             except SyntaxError:
                 showerror(title="Error", message="Please, enter a real value for λ, μ and K")
@@ -362,8 +398,8 @@ class Windows:
                     capital_rho_right = Label(label_frame_rho, text=f"{rho}", font=('Ubuntu', 16), fg="#0000ff")
                     capital_rho_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
-                    del mmc
                     answer.mainloop()
+                    del mmc
 
             except SyntaxError:
                 showerror(title="Error", message="Please, enter a real value for λ, μ and C")
@@ -435,8 +471,8 @@ class Windows:
                     capital_rho_right = Label(label_frame_rho, text=f"{rho}", font=('Ubuntu', 16), fg="#0000ff")
                     capital_rho_right.grid(row=0, column=1, sticky=W, padx=10, pady=5)
 
-                    del mmck
                     answer.mainloop()
+                    del mmck
 
             except SyntaxError:
                 showerror(title="Error", message="Please, enter a real value for λ, μ, C and K")
