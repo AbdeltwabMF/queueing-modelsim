@@ -54,10 +54,10 @@ It is common to use the symbols:
     ![Deterministic](./ScreenShots/Deterministic.png)
 
     the following figures show out the whole plots.
-    - ![Entities_in_System](./ScreenShots/Entities_in_System.png)
-    - ![Waiting_in_queue](./ScreenShots/Waiting_in_queue.png)
-    - ![Waiting_in_System](./ScreenShots/Waiting_in_System.png)
-    - ![Departure_time](./ScreenShots/Departure_time.png)
+    ![Entities_in_System](./ScreenShots/Entities_in_System.png)
+    ![Waiting_in_queue](./ScreenShots/Waiting_in_queue.png)
+    ![Waiting_in_System](./ScreenShots/Waiting_in_System.png)
+    ![Departure_time](./ScreenShots/Departure_time.png)
 ---    
   2. Other than that which is Stochastic Models a small window will popup and you will get the answers for server utilisation (Ro), Average entities in the whole system (L), Average entities in queue (Lq), Average time an entity spends in the system (W), Average time an entity waits in line to be served (Wq).
     ![Stochastic](./ScreenShots/Stochastic.png)
