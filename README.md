@@ -60,9 +60,10 @@ It is common to use the symbols:
   
   ![Deterministic](./ScreenShots/Deterministic.png)
 
+---
+
 ## the following figures show out the whole plots. 
  
- ---
   - Firstly: the following fiqure shows The number of entities (aka. Customers) in the System at each unit of time. 
   ![Entities_in_System](./ScreenShots/Entities_in_System.png)
  ---
