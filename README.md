@@ -62,7 +62,7 @@ It is common to use the symbols:
 
 ---
 
-## the following figures show out the whole plots. 
+## The following figures will show the whole plots out. 
  
   - Firstly: the following fiqure shows The number of entities (aka. Customers) in the System at each unit of time. 
   ![Entities_in_System](./ScreenShots/Entities_in_System.png)
