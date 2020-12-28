@@ -1,5 +1,8 @@
 # Queueing ModelSim
 
+It is the software created for calculation of characteristics of different queues having the BMAP (batch Markovian Arrival Process) as input and the deterministic queues which characterized by units of input (i.e. customers) arrive at known points in time and the service times are fixed intervals.
+
+
 ## About Queueing Theory
 
 ### Definition
@@ -35,7 +38,7 @@ It is common to use the symbols:
  - µ to be the mean service rate.
 
 
-# Queueing ModelSim - What it does and How to use it
+# What it does and How to use it
 
 1. Download the repository, or Clone it using the following command: `git clone https://github.com/AbdeltwabMF/Queueing-ModelSim` as shown in figure below.
 ![Clone](./ScreenShots/Clone.png)
