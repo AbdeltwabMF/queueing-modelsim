@@ -73,11 +73,11 @@ It is common to use the symbols:
    - Thirdly: the following figure shows The Time that Customer n need to spend in the System till departure.
    ![Waiting_in_System](./ScreenShots/Waiting_in_System.png)
  ---
-   - Lastly: the following figure shows the time of departure of each entitie (aka. Customer).
+   - Lastly: the following figure shows the time of departure of each entity (aka. Customer).
    ![Departure_time](./ScreenShots/Departure_time.png)
 ---    
 
-  - Other than that which is Stochastic Models a small window will popup and you will get the answers for server utilisation (Ro), Average entities in the whole system (L), Average entities in queue (Lq), Average time an entity spends in the system (W), Average time an entity waits in line to be served (Wq).
+  - Other than that which is Stochastic Models a small window will popup and you will get the answers for server utilization (rho), Average entities in the whole system (L), Average entities in queue (Lq), Average time an entity spends in the system (W), Average time an entity waits in line to be served (Wq).
     ![Stochastic](./ScreenShots/Stochastic.png)
 
 ---
