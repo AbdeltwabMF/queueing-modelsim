@@ -27,7 +27,7 @@ D represents the maximum number of customers allowed in the queueing system (eit
 E represents the maximum number of customers in total
 Common options for A and B are:
 
-M for a Poisson arrival distribution (exponential interarrival distribution) or a exponential service time distribution
+M for a Poisson arrival distribution (exponential inter-arrival distribution) or a exponential service time distribution
 D for a deterministic or constant value
 G for a general distribution (but with a known mean and variance)
 If D and E are not specified then it is assumed that they are infinite.
@@ -64,17 +64,25 @@ It is common to use the symbols:
 
 ## The following figures will show the whole plots out. 
  
-  - Firstly: the following fiqure shows The number of entities (aka. Customers) in the System at each unit of time. 
+  - Firstly: the following figure shows The number of entities (aka. Customers) in the System at each unit of time. 
   ![Entities_in_System](./ScreenShots/Entities_in_System.png)
  ---
-   - Secondly: the following figure shows The Time that Customer n need to spend in the queue to be served.
+   - Secondly: the following figure shows The Time that Customer n needs to spend in the queue to be served.
    ![Waiting_in_queue](./ScreenShots/Waiting_in_queue.png)
  ---
-   - Thirdly: the following figure shows The Time that Customer n need to spend in the System till departure.
+   - Thirdly: the following figure shows The Time that Customer n needs to spend in the System till departure.
    ![Waiting_in_System](./ScreenShots/Waiting_in_System.png)
  ---
-   - Lastly: the following figure shows the time of departure of each entity (aka. Customer).
+   - fourthly: the following figure shows the time of departure of each entity (aka. Customer).
    ![Departure_time](./ScreenShots/Departure_time.png)
+ ---
+   - fifthly: the following figure shows the Customer who is balked and corresponding time of the process.
+   ![Balking_customers](./ScreenShots/Balking_customers.png)
+ ---
+   - Lastly: the following figure shows the arrival time of each entity.
+   ![Arrival_time](./ScreenShots/Arrival_time.png)
+ ---
+   
 ---    
 
   - Other than that which is Stochastic Models a small window will popup and you will get the answers for server utilization (rho), Average entities in the whole system (L), Average entities in queue (Lq), Average time an entity spends in the system (W), Average time an entity waits in line to be served (Wq).
