@@ -81,8 +81,6 @@ It is common to use the symbols:
  ---
    - Lastly: the following figure shows the arrival time of each entity.
    ![Arrival_time](./ScreenShots/Arrival_time.png)
- ---
-   
 ---    
 
   - Other than that which is Stochastic Models a small window will popup and you will get the answers for server utilization (rho), Average entities in the whole system (L), Average entities in queue (Lq), Average time an entity spends in the system (W), Average time an entity waits in line to be served (Wq).
