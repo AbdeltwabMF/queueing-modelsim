@@ -1,3 +1,4 @@
+from _tkinter import TclError
 from tkinter import *
 from tkinter.messagebox import *
 from Plots import *
@@ -29,30 +30,49 @@ class Windows:
         frame6 = Frame(label_frame3)
         frame6.grid(row=0, column=1, pady=5, padx=10)
 
-        # --- Buttons --- #
-        self.Quit_img = PhotoImage(file="./Img/button_quit.png")
-        self.Calculate_img = PhotoImage(file="./Img/button_calculate.png")
+        # --- Images --- #
+        try:
+            self.Quit_img = PhotoImage(file="../Img/button_quit.png")
+            self.Calculate_img = PhotoImage(file="../Img/button_calculate.png")
 
+            self.sys_size_img = PhotoImage(file="../Img/e_in_s.png")
+            self.q_time_img = PhotoImage(file="../Img/w_in_q.png")
+            self.total_time_img = PhotoImage(file="../Img/w_in_s.png")
+            self.departure_img = PhotoImage(file="../Img/d_t.png")
+            self.arrival_t_img = PhotoImage(file="../Img/a_t.png")
+            self.balking_cus_img = PhotoImage(file="../Img/b_c.png")
+
+            self.DD1K_img = PhotoImage(file="../Img/button_d-d-k.png")
+            self.MM1_img = PhotoImage(file="../Img/button_m-m-1.png")
+            self.MM1K_img = PhotoImage(file="../Img/button_m-m-k.png")
+            self.MMc_img = PhotoImage(file="../Img/button_m-m-c.png")
+            self.MMcK_img = PhotoImage(file="../Img/button_m-m-c-k.png")
+        except TclError:
+            self.Quit_img = PhotoImage(file="./Img/button_quit.png")
+            self.Calculate_img = PhotoImage(file="./Img/button_calculate.png")
+
+            self.sys_size_img = PhotoImage(file="./Img/e_in_s.png")
+            self.q_time_img = PhotoImage(file="./Img/w_in_q.png")
+            self.total_time_img = PhotoImage(file="./Img/w_in_s.png")
+            self.departure_img = PhotoImage(file="./Img/d_t.png")
+            self.arrival_t_img = PhotoImage(file="./Img/a_t.png")
+            self.balking_cus_img = PhotoImage(file="./Img/b_c.png")
+
+            self.DD1K_img = PhotoImage(file="./Img/button_d-d-k.png")
+            self.MM1_img = PhotoImage(file="./Img/button_m-m-1.png")
+            self.MM1K_img = PhotoImage(file="./Img/button_m-m-k.png")
+            self.MMc_img = PhotoImage(file="./Img/button_m-m-c.png")
+            self.MMcK_img = PhotoImage(file="./Img/button_m-m-c-k.png")
+
+        # --- Buttons --- #
         self.Quit = Button(frame5, image=self.Quit_img, command=self.exit_program, borderwidth=0)
         self.Quit.grid(row=0, column=0, sticky=W, pady=3, padx=16)
 
         self.Calculate = Button(frame6, image=self.Calculate_img, command=self.radio_event, borderwidth=0)
         self.Calculate.grid(row=0, column=0, sticky=W, pady=3, padx=16)
 
-        # --- Plots Buttons --- #
-        self.sys_size_img = PhotoImage(file="./Img/e_in_s.png")
-        self.q_time_img = PhotoImage(file="./Img/w_in_q.png")
-        self.total_time_img = PhotoImage(file="./Img/w_in_s.png")
-        self.departure_img = PhotoImage(file="./Img/d_t.png")
-
         # --- Radio Buttons --- #
         self.rad_values = IntVar()
-
-        self.DD1K_img = PhotoImage(file="./Img/button_d-d-k.png")
-        self.MM1_img = PhotoImage(file="./Img/button_m-m-1.png")
-        self.MM1K_img = PhotoImage(file="./Img/button_m-m-k.png")
-        self.MMc_img = PhotoImage(file="./Img/button_m-m-c.png")
-        self.MMcK_img = PhotoImage(file="./Img/button_m-m-c-k.png")
 
         # indicatoron = False
         self.DD1K = Radiobutton(label_frame1, image=self.DD1K_img, value=1, variable=self.rad_values, borderwidth=0, command=self.rad_dd1k)
@@ -161,6 +181,12 @@ class Windows:
                 def departure_p():
                     Plots.plot_departure(dd1k)
 
+                def balking_cus_p():
+                    Plots.plot_balking_list(dd1k)
+
+                def arrival_t_p():
+                    Plots.plot_arrival_time(dd1k)
+
                 answer = Toplevel()
                 answer.title("D/D/1/K")
 
@@ -178,6 +204,12 @@ class Windows:
 
                 departure = Button(label_frame, image=self.departure_img, command=departure_p, borderwidth=0)
                 departure.grid(row=1, column=1, sticky=W, padx=10, pady=5)
+
+                balking_cus = Button(label_frame, image=self.balking_cus_img, command=balking_cus_p, borderwidth=0)
+                balking_cus.grid(row=2, column=0, sticky=W, padx=10, pady=5)
+
+                arrival_t = Button(label_frame, image=self.arrival_t_img, command=arrival_t_p, borderwidth=0)
+                arrival_t.grid(row=2, column=1, sticky=W, padx=10, pady=5)
 
                 answer.mainloop()
                 del dd1k
