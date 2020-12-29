@@ -17,6 +17,7 @@ class DD1K:
         self.customer_arrival_time = []  # DONE
         self.system_size_per_time = []  # DONE
         self.balking_list = {}  # DONE
+        self.balking_customers = []  # DONE
         self.queue_time = []  # DONE
         self.total_time = []  # DONE
         self.departures = []  # DONE
@@ -57,6 +58,11 @@ class DD1K:
                     balk_counter += 1
                     self.balking_list[i / self.__lambda] = balk_counter
                     system_size_per_customer -= 1
+
+            # --- Balking Customers --- #
+            self.balking_customers = [-10] * self.customer_limit
+            for i in self.balking_list:
+                self.balking_customers[self.customer_corresponding_to_time(i)] = i
 
             # Number of Customers in System Per unit
             self.system_size_per_time = [0] * self.time_limit
