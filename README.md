@@ -85,8 +85,7 @@ It is common to use the symbols:
 
   - Other than that which is Stochastic Models a small window will popup and you will get the answers for server utilization (rho), Average entities in the whole system (L), Average entities in queue (Lq), Average time an entity spends in the system (W), Average time an entity waits in line to be served (Wq).
     ![Stochastic](./ScreenShots/Stochastic.png)
-
 ---
     
 ## License
-GPLv3
+Licensed under the [GPL-3.0 License](LICENSE.md)
