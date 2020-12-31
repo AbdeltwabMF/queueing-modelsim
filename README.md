@@ -41,12 +41,12 @@ It is common to use the symbols:
 # What it does and How to use it
 
 1. Download the repository, or Clone it using the following command: `git clone https://github.com/AbdeltwabMF/Queueing-ModelSim` as shown in figure below.
-![Clone](./ScreenShots/Clone.png)
+![Clone](./screenshots/Clone.png)
 
 --- 
 
 2. Open the `Queueing-ModelSim` directory, and then open `src` directory, then Run `python3 main.py` as shown in the following figure.
-![Run](./ScreenShots/Run.png)
+![Run](./screenshots/Run.png)
 
 
   - Choose the queueing model you want to calculate. `D/D/1/K`, `M/M/1`, `M/M/1/K`, `M/M/C`, or `M/M/C/K`
@@ -56,35 +56,35 @@ It is common to use the symbols:
 
 ---
 
-3. In case of Deterministic Queues -AKA- `D/D/1/K` a small window will popup asked you to choose which data you want to plot as shown below.
+3. In case of Deterministic Queues AKA, `D/D/1/K` a small window will popup asked you to choose which data you want to plot as shown below.
   
-  ![Deterministic](./ScreenShots/Deterministic.png)
+  ![Deterministic](./screenshots/Deterministic.png)
 
 ---
 
 ## The following figures will show the whole plots out. 
  
   - Firstly: the following figure shows The number of entities (aka. Customers) in the System at each unit of time. 
-  ![Entities_in_System](./ScreenShots/Entities_in_System.png)
+  ![Entities_in_System](./screenshots/Entities_in_System.png)
  ---
    - Secondly: the following figure shows The Time that Customer n needs to spend in the queue to be served.
-   ![Waiting_in_queue](./ScreenShots/Waiting_in_queue.png)
+   ![Waiting_in_queue](./screenshots/Waiting_in_queue.png)
  ---
    - Thirdly: the following figure shows The Time that Customer n needs to spend in the System till departure.
-   ![Waiting_in_System](./ScreenShots/Waiting_in_System.png)
+   ![Waiting_in_System](./screenshots/Waiting_in_System.png)
  ---
    - Fourthly: the following figure shows the time of departure of each entity (aka. Customer).
-   ![Departure_time](./ScreenShots/Departure_time.png)
+   ![Departure_time](./screenshots/Departure_time.png)
  ---
-   - Fifthly: the following figure shows the Customer who is balked and corresponding time of the process.
-   ![Balking_customers](./ScreenShots/Balking_customers.png)
+   - Fifthly: the following figure shows the Customer who is balked and corresponding time to the process.
+   ![Balking_customers](./screenshots/Balking_customers.png)
  ---
    - Lastly: the following figure shows the arrival time of each entity.
-   ![Arrival_time](./ScreenShots/Arrival_time.png)
+   ![Arrival_time](./screenshots/Arrival_time.png)
 ---    
 
   - Other than that which is Stochastic Models a small window will popup and you will get the answers for server utilization (rho), Average entities in the whole system (L), Average entities in queue (Lq), Average time an entity spends in the system (W), Average time an entity waits in line to be served (Wq).
-    ![Stochastic](./ScreenShots/Stochastic.png)
+    ![Stochastic](./screenshots/Stochastic.png)
 ---
     
 ## License
