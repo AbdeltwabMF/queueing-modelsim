@@ -41,6 +41,14 @@ It is common to use the symbols:
 
 ---
 
+### prerequisite libraries
+sudo apt install python3
+sudo apt install python3-pip
+
+- sudo pip3 install tk
+- sudo pip3 install matplotlib
+
+---
 
 1. Download the repository, or Clone it using the following command: `git clone https://github.com/AbdeltwabMF/Queueing-ModelSim` as shown in figure below.
 ![Clone](./screenshots/Clone.png)
