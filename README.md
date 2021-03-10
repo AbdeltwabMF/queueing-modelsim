@@ -42,8 +42,8 @@ It is common to use the symbols:
 ---
 
 ### prerequisite libraries
-sudo apt install python3
-sudo apt install python3-pip
+- sudo apt install python3
+- sudo apt install python3-pip
 
 - sudo pip3 install tk
 - sudo pip3 install matplotlib
