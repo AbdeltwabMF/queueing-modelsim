@@ -2,33 +2,47 @@ from math import factorial
 
 EPS = 1e-9
 
+# --------------------  --------------------  --------------------  -------------------- #
+
 
 class MM1:
 
     def __init__(self, _lambda, mu):
+        # lambda : mean arrival rate
         self.__lambda = eval(_lambda)
+
+        # mu : mean service rate
         self.__mu = eval(mu)
+
+        # rho : mean server utilization
         self.__rho = self.__lambda / self.__mu
 
     @property
     def capital_p0(self):
-        return round(1 - self.__rho, 4)
+        # when rho < 1
+        return 1 - self.__rho
+        # else TODO: throw an exception
 
     def capital_p(self, n):
-        return round(self.__rho**n * self.capital_p0, 4)
+        return self.__rho ** n * self.capital_p0
 
+    # L : Expected number of the customers in the system
     def capital_l(self):
-        return round(self.__lambda / (self.__mu - self.__lambda + EPS), 4)
+        return self.__lambda * self.capital_w()
 
+    # Lq : Expected number of the customers in the queue
     def capital_lq(self):
-        return round(self.__lambda**2 / (self.__mu * (self.__mu - self.__lambda + EPS)), 4)
+        return self.__lambda * self.capital_wq()
 
+    # W : Expected waiting time in the system
     def capital_w(self):
-        return round(1 / (self.__mu - self.__lambda + EPS), 4)
+        return 1 / (self.__mu - self.__lambda + EPS)
 
+    # Wq : Expected waiting time in the queue
     def capital_wq(self):
-        return round(self.__lambda / (self.__mu * (self.__mu - self.__lambda + EPS)), 4)
+        return self.__rho * self.capital_w()
 
+    # setting variables
     def set_lambda(self, _lambda):
         self.__lambda = eval(_lambda)
         self.__rho = self.__lambda / self.__mu
@@ -37,6 +51,7 @@ class MM1:
         self.__mu = eval(mu)
         self.__rho = self.__lambda / self.__mu
 
+    # getting variables
     def get_lambda(self):
         return self.__lambda
 
@@ -44,7 +59,9 @@ class MM1:
         return self.__mu
 
     def get_rho(self):
-        return round(self.__rho, 4)
+        return self.__rho
+
+# --------------------  --------------------  --------------------  -------------------- #
 
 
 class MM1K:
@@ -59,14 +76,14 @@ class MM1K:
         if self.__rho == 1:
             return 1 / (self.__k + 1)
         else:
-            return round(self.__rho**n * ((1 - self.__rho + EPS) / (1 - self.__rho**(self.__k + 1) + EPS)), 2)
+            return round(self.__rho ** n * ((1 - self.__rho + EPS) / (1 - self.__rho ** (self.__k + 1) + EPS)), 2)
 
     def capital_l(self):
         if self.__rho == 1:
             return self.__k / 2
         else:
-            num = 1 - (self.__k + 1) * self.__rho**self.__k + self.__k * self.__rho**(self.__k + 1) + EPS
-            den = (1 - self.__rho + EPS) * (1 - self.__rho**(self.__k + 1) + EPS)
+            num = 1 - (self.__k + 1) * self.__rho ** self.__k + self.__k * self.__rho ** (self.__k + 1) + EPS
+            den = (1 - self.__rho + EPS) * (1 - self.__rho ** (self.__k + 1) + EPS)
         return round(self.__rho * num / den, 2)
 
     def capital_lq(self):
@@ -115,28 +132,29 @@ class MMc:
         acc = 0
         if self.__c > self.__r:
             for i in range(self.__c):
-                acc += self.__r**i / factorial(i)
-            acc += self.__c * self.__r**self.__c / (factorial(self.__c) * (self.__c - self.__r + EPS))
+                acc += self.__r ** i / factorial(i)
+            acc += self.__c * self.__r ** self.__c / (factorial(self.__c) * (self.__c - self.__r + EPS))
         else:
             for i in range(self.__c):
-                acc += (1 // factorial(i)) * self.__r**i
-            acc += (1 // factorial(self.__c)) * self.__r**self.__c * ((self.__c * self.__mu) / (self.__c * self.__mu - self.__lambda + EPS))
+                acc += (1 // factorial(i)) * self.__r ** i
+            acc += (1 // factorial(self.__c)) * self.__r ** self.__c * (
+                        (self.__c * self.__mu) / (self.__c * self.__mu - self.__lambda + EPS))
         return round(1 / acc, 6)
 
     def capital_p(self, n):
-        num = self.__lambda**n
+        num = self.__lambda ** n
         if 0 <= n < self.__c:
-            den = factorial(n) * self.__mu**n
+            den = factorial(n) * self.__mu ** n
         else:
-            den = self.__c**(n - self.__c) * factorial(self.__c) * self.__mu**n
+            den = self.__c ** (n - self.__c) * factorial(self.__c) * self.__mu ** n
         return (num / den) * self.capital_p0()
 
     def capital_l(self):
         return round(self.capital_lq() + self.__r, 3)
 
     def capital_lq(self):
-        num = self.__r**(self.__c + 1) / self.__c
-        den = factorial(self.__c) * (1 - self.__r / self.__c + EPS)**2
+        num = self.__r ** (self.__c + 1) / self.__c
+        den = factorial(self.__c) * (1 - self.__r / self.__c + EPS) ** 2
         return round(num * self.capital_p0() / den, 3)
 
     def capital_w(self):
@@ -188,33 +206,35 @@ class MMcK:
 
     def capital_p0(self):
         if self.__c != self.__r:
-            acc = (1 - self.__rho**(self.__k + 1 - self.__c)) * self.__r**self.__c / (factorial(self.__c) * (1 - self.__rho))
+            acc = (1 - self.__rho ** (self.__k + 1 - self.__c)) * self.__r ** self.__c / (
+                        factorial(self.__c) * (1 - self.__rho))
         else:
-            acc = (self.__k + 1 - self.__c) * self.__r**self.__c / factorial(self.__c)
+            acc = (self.__k + 1 - self.__c) * self.__r ** self.__c / factorial(self.__c)
 
         for i in range(self.__c):
-            acc += (self.__r**i / factorial(i))
+            acc += (self.__r ** i / factorial(i))
 
         return round(1 / acc, 9)
 
     def capital_p(self, n):
-        num = self.__lambda**n
+        num = self.__lambda ** n
         if n < self.__c:
-            den = factorial(n) * self.__mu**n
+            den = factorial(n) * self.__mu ** n
         else:
-            den = self.__c**(n - self.__c) * factorial(self.__c) * self.__mu**n
+            den = self.__c ** (n - self.__c) * factorial(self.__c) * self.__mu ** n
         return round(num / den * self.capital_p0(), 9)
 
     def capital_l(self):
         acc = 0.0
         for i in range(self.__c):
-            acc += (self.__c - i) * self.__r**i / factorial(i)
+            acc += (self.__c - i) * self.__r ** i / factorial(i)
         return round(self.capital_lq() + self.__c - self.capital_p0() * acc, 9)
 
     def capital_lq(self):
-        acc = 1 - (self.__rho**(self.__k - self.__c) * (self.__k - self.__c + 1) * (1.0 - self.__rho + EPS) + self.__rho**(self.__k + 1 - self.__c))
-        num = self.__rho * self.__r**self.__c * self.capital_p0()
-        den = factorial(self.__c) * (1.0 - self.__rho + EPS)**2
+        acc = 1 - (self.__rho ** (self.__k - self.__c) * (self.__k - self.__c + 1) * (
+                    1.0 - self.__rho + EPS) + self.__rho ** (self.__k + 1 - self.__c))
+        num = self.__rho * self.__r ** self.__c * self.capital_p0()
+        den = factorial(self.__c) * (1.0 - self.__rho + EPS) ** 2
         return round(num / den * acc, 9)
 
     def capital_w(self):
