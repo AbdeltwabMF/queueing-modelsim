@@ -67,34 +67,54 @@ class MM1:
 class MM1K:
 
     def __init__(self, _lambda, mu, k):
+        # lambda : mean arrival rate
         self.__lambda = eval(_lambda)
+
+        # mu : mean service rate
         self.__mu = eval(mu)
-        self.__k = eval(k)
+
+        # rho : mean server utilization
         self.__rho = self.__lambda / self.__mu
 
-    def capital_p(self, n):
-        if self.__rho == 1:
-            return 1 / (self.__k + 1)
-        else:
-            return round(self.__rho ** n * ((1 - self.__rho + EPS) / (1 - self.__rho ** (self.__k + 1) + EPS)), 2)
+        # K : finite capacity buffer
+        self.__k = eval(k)
 
+    def capital_p0(self):
+        if self.__rho != 1:
+            return (1 - self.__rho) / (1 - self.__rho ** (self.__k + 1))
+        else:
+            return 1 / (self.__k + 1)
+
+    def capital_p(self, n):
+        # if n < k
+        return self.capital_p0() * self.__rho ** n
+        # else TODO: throw an exception
+
+    def lambda_dash(self):
+        return self.__lambda * (1 - self.capital_p(self.__k))
+
+    # L : Expected number of the customers in the system
     def capital_l(self):
         if self.__rho == 1:
             return self.__k / 2
         else:
-            num = 1 - (self.__k + 1) * self.__rho ** self.__k + self.__k * self.__rho ** (self.__k + 1) + EPS
-            den = (1 - self.__rho + EPS) * (1 - self.__rho ** (self.__k + 1) + EPS)
-        return round(self.__rho * num / den, 2)
+            num = 1 - (self.__k + 1) * self.__rho ** self.__k + self.__k * self.__rho ** (self.__k + 1)
+            den = (1 - self.__rho) * (1 - self.__rho ** (self.__k + 1))
+        return self.__rho * (num / den)
 
+    # Lq : Expected number of the customers in the queue
     def capital_lq(self):
-        return round(self.capital_wq() * self.__lambda * (1 - self.capital_p(self.__k) + EPS), 2)
+        return self.capital_wq() * self.lambda_dash()
 
+    # W : Expected waiting time in the system
     def capital_w(self):
-        return round(self.capital_l() / (self.__lambda * (1 - self.capital_p(self.__k) + EPS)), 2)
+        return self.capital_l() / self.lambda_dash()
 
+    # Wq : Expected waiting time in the queue
     def capital_wq(self):
-        return round(self.capital_w() - (1 / self.__mu) + EPS, 2)
+        return self.capital_w() - (1 / self.__mu)
 
+    # setting variables
     def set_lambda(self, _lambda):
         self.__lambda = eval(_lambda)
         self.__rho = self.__lambda / self.__mu
@@ -106,6 +126,7 @@ class MM1K:
     def set_k(self, k):
         self.__k = int(k)
 
+    # getting variables
     def get_lambda(self):
         return self.__lambda
 
@@ -118,50 +139,70 @@ class MM1K:
     def get_k(self):
         return self.__k
 
+# --------------------  --------------------  --------------------  -------------------- #
+
+
+"""
+MMc: Poisson Arrivals, exponentially distributed service times, c identical servers and infinite capacity buffer.
+"""
+
 
 class MMc:
 
     def __init__(self, _lambda, mu, c):
+        # lambda : mean arrival rate
         self.__lambda = eval(_lambda)
+
+        # mu : mean service rate
         self.__mu = eval(mu)
+
+        # c : means c identical servers
         self.__c = eval(c)
+
         self.__r = self.__lambda / self.__mu
+
         self.__rho = self.__r / self.__c
 
     def capital_p0(self):
         acc = 0
-        if self.__c > self.__r:
+        if self.__rho >= 1:
             for i in range(self.__c):
                 acc += self.__r ** i / factorial(i)
-            acc += self.__c * self.__r ** self.__c / (factorial(self.__c) * (self.__c - self.__r + EPS))
+            acc += (self.__r ** self.__c / factorial(self.__c)) * (self.__c * self.__mu / (self.__c * self.__mu - self.__lambda))
         else:
             for i in range(self.__c):
-                acc += (1 // factorial(i)) * self.__r ** i
-            acc += (1 // factorial(self.__c)) * self.__r ** self.__c * (
-                        (self.__c * self.__mu) / (self.__c * self.__mu - self.__lambda + EPS))
-        return round(1 / acc, 6)
+                acc += self.__r ** i / factorial(i)
+            acc += self.__c * self.__r ** self.__c / (factorial(self.__c) * (self.__c - self.__r))
+        return 1 / acc
 
     def capital_p(self, n):
-        num = self.__lambda ** n
         if 0 <= n < self.__c:
-            den = factorial(n) * self.__mu ** n
+            den = factorial(n)
         else:
-            den = self.__c ** (n - self.__c) * factorial(self.__c) * self.__mu ** n
-        return (num / den) * self.capital_p0()
+            den = self.__c ** (n - self.__c) * factorial(self.__c)
+        return self.__r ** n * self.capital_p0() / den
 
+    # L : Expected number of the customers in the system
     def capital_l(self):
-        return round(self.capital_lq() + self.__r, 3)
+        return self.capital_lq() + self.__r
 
+    # Lq : Expected number of the customers in the queue
     def capital_lq(self):
-        num = self.__r ** (self.__c + 1) / self.__c
-        den = factorial(self.__c) * (1 - self.__r / self.__c + EPS) ** 2
-        return round(num * self.capital_p0() / den, 3)
+        num = self.__r ** self.__c * self.__mu * self.__lambda
+        den = factorial(self.__c - 1) * (self.__c * self.__mu - self.__lambda) ** 2
+        return num * self.capital_p0() / den
 
+    # W : Expected waiting time in the system
     def capital_w(self):
-        return round(self.capital_wq() + 1 / self.__mu, 3)
+        return self.capital_wq() + 1 / self.__mu
 
+    # Wq : Expected waiting time in the queue
     def capital_wq(self):
-        return round(self.capital_lq() / self.__lambda, 3)
+        return self.capital_lq() / self.__lambda
+
+    # Average number of idle server C_i = c − r
+    def avg_idle(self):
+        return self.__c - self.__r
 
     def set_lambda(self, _lambda):
         self.__lambda = eval(_lambda)
@@ -191,6 +232,14 @@ class MMc:
 
     def get_r(self):
         return self.__r
+
+# --------------------  --------------------  --------------------  -------------------- #
+
+
+"""
+MMcK : Meaning: Poisson Arrivals, exponentially distributed service times, c identical servers and 
+finite capacity buffer with size K.
+"""
 
 
 class MMcK:
