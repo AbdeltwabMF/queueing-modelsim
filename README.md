@@ -1,101 +1,86 @@
 # Queueing ModelSim
 
-It is the software created for the calculation of characteristics of different queues having the BMAP (batch Markovian Arrival Process) as input, and the deterministic queues which characterized by units of input (i.e. customers) arrive at known points in time and the service times are fixed intervals.
-
+This software is designed to calculate the characteristics of different queues using the BMAP (Batch Markovian Arrival Process) as input, and deterministic queues characterized by units of input (i.e., customers) arriving at known points in time with fixed service intervals.
 
 ## About Queueing Theory
 
 ### Definition
 
-Queueing theory is a powerful tool to analyze the daily phenomenon of waiting in line. Discover how to define queueing theory, how it started, why it’s important, and how it can be applied to real-life situations.  
+Queueing theory is a powerful tool for analyzing the daily phenomenon of waiting in line. Learn how to define queueing theory, its origins, significance, and real-life applications.
 
-Typical examples might be:
+Typical examples include:
 
- - banks/supermarkets - waiting for service
- - computers - waiting for a response
- - public transport - waiting for a train or a bus
+- Banks/supermarkets: waiting for service
+- Computers: waiting for a response
+- Public transport: waiting for a train or bus
 
+### Different Types of Queueing Systems
 
-### Different types of Queueing Systems
+Also known as Kendall's Notation with the format `A/B/C/D/E`, where:
 
-Also know as Kendall's Notation as `A/B/C/D/E`, where:
+- `A` represents the probability distribution for the arrival process
+- `B` represents the probability distribution for the service process
+- `C` represents the number of channels (servers)
+- `D` represents the maximum number of customers allowed in the queueing system (either being served or waiting for service)
+- `E` represents the maximum total number of customers
 
-A represents the probability distribution for the arrival process
-B represents the probability distribution for the service process
-C represents the number of channels (servers)
-D represents the maximum number of customers allowed in the queueing system (either being served or waiting for service)
-E represents the maximum number of customers in total
-Common options for A and B are:
+Common options for `A` and `B` are:
 
-M for a Poisson arrival distribution (exponential inter-arrival distribution) or a exponential service time distribution
-D for a deterministic or constant value
-G for a general distribution (but with a known mean and variance)
-If D and E are not specified then it is assumed that they are infinite.
+- `M` for a Poisson arrival distribution (exponential inter-arrival distribution) or an exponential service time distribution
+- `D` for a deterministic or constant value
+- `G` for a general distribution (with known mean and variance)
 
-It is common to use the symbols:
+If `D` and `E` are not specified, it is assumed that they are infinite.
 
- - λ to be the mean arrival rate.
- - µ to be the mean service rate.
+Common symbols used include:
 
-# What it does and How to use it
+- `λ` for the mean arrival rate
+- `µ` for the mean service rate
 
----
+## What It Does and How to Use It
 
-### prerequisite libraries
-- sudo apt install python3
-- sudo apt install python3-pip
+### Prerequisite Libraries
 
-- sudo pip3 install tk
-- sudo pip3 install matplotlib
+- Install Python 3: `sudo apt install python3`
+- Install pip for Python 3: `sudo apt install python3-pip`
+- Install required libraries: `sudo pip3 install tk matplotlib`
 
----
+1. Clone or download the repository using the following command:
+   `git clone https://github.com/AbdeltwabMF/Queueing-ModelSim`
+   ![Clone](./screenshots/Clone.png)
 
-1. Download the repository, or Clone it using the following command: `git clone https://github.com/AbdeltwabMF/Queueing-ModelSim` as shown in figure below.
-![Clone](./screenshots/Clone.png)
+2. Navigate to the `Queueing-ModelSim/src` directory and run `python3 main.py`.
 
----
+   - Choose the queueing model you want to calculate: `D/D/1/K`, `M/M/1`, `M/M/1/K`, `M/M/C`, or `M/M/C/K`.
+   - Input the arrival rate (`λ`) and service rates (`µ`).
+   - Provide additional parameters such as the number of servers (`C`) and maximum number of entities (`K` or `M`).
+   - Press "Calculate".
 
-2. Open the `Queueing-ModelSim` directory, and then open `src` directory, then Run `python3 main.py` as shown in the following figure.
-![Run](./screenshots/Run.png)
+   ![Run](./screenshots/Run.png)
 
+3. For Deterministic Queues (`D/D/1/K`), a window will prompt you to choose the data you want to plot.
+   ![Deterministic](./screenshots/Deterministic.png)
 
-  - Choose the queueing model you want to calculate. `D/D/1/K`, `M/M/1`, `M/M/1/K`, `M/M/C`, or `M/M/C/K`
-  - Choose the arrival rate (λ) and service rates (µ).
-  - Then choose  the number of servers in your system (C), in case of models (`M/M/C` or `M/M/C/K`), the maximum number of entities (aka. Customers) that your queue can hold (K), in case of models (`D/D/1/K`, `M/M/1/K`, or `M/M/C/K`), and the number of initial entities in the system(M) in case of model (`D/D/1/K`). 
-  - Press Calculate. 
+## Plots
 
----
+The following figures depict various aspects of the queueing system:
 
-3. In case of Deterministic Queues AKA, `D/D/1/K` a small window will popup asked you to choose which data you want to plot as shown below.
+- Number of entities (customers) in the system at each unit of time.
+   ![Entities_in_System](./screenshots/Entities_in_System.png)
+- Time that customer n spends in the queue to be served.
+   ![Waiting_in_queue](./screenshots/Waiting_in_queue.png)
+- Time that customer n spends in the system until departure.
+   ![Waiting_in_System](./screenshots/Waiting_in_System.png)
+- Time of departure for each entity (customer).
+   ![Departure_time](./screenshots/Departure_time.png)
+- Customers who balked and corresponding processing time.
+   ![Balking_customers](./screenshots/Balking_customers.png)
+- Arrival time of each entity.
+   ![Arrival_time](./screenshots/Arrival_time.png)
 
-  ![Deterministic](./screenshots/Deterministic.png)
-
----
-
-## The following figures will show the whole plots out. 
-
-  - Firstly: the following figure shows The number of entities (aka. Customers) in the System at each unit of time. 
-    ![Entities_in_System](./screenshots/Entities_in_System.png)
----
-   - Secondly: the following figure shows The Time that Customer n needs to spend in the queue to be served.
-      ![Waiting_in_queue](./screenshots/Waiting_in_queue.png)
----
-   - Thirdly: the following figure shows The Time that Customer n needs to spend in the System till departure.
-      ![Waiting_in_System](./screenshots/Waiting_in_System.png)
----
-   - Fourthly: the following figure shows the time of departure of each entity (aka. Customer).
-      ![Departure_time](./screenshots/Departure_time.png)
----
-   - Fifthly: the following figure shows the Customer who is balked and corresponding time to the process.
-      ![Balking_customers](./screenshots/Balking_customers.png)
----
-   - Lastly: the following figure shows the arrival time of each entity.
-      ![Arrival_time](./screenshots/Arrival_time.png)
----
-
-  - Other than that which is Stochastic Models a small window will popup and you will get the answers for server utilization (rho), Average entities in the whole system (L), Average entities in queue (Lq), Average time an entity spends in the system (W), Average time an entity waits in line to be served (Wq).
-    ![Stochastic](./screenshots/Stochastic.png)
----
+For Stochastic Models, a window will display server utilization (`rho`), average entities in the system (`L`), average entities in queue (`Lq`), average time an entity spends in the system (`W`), and average time an entity waits in line to be served (`Wq`).
+![Stochastic](./screenshots/Stochastic.png)
 
 ## License
+
 Licensed under the [GPL-3.0 License](LICENSE.md)
